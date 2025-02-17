@@ -14,6 +14,12 @@
       <el-main>
         <router-view />
       </el-main>
+      <!-- ICP备案 -->
+      <div class="footer">
+        <div class="footer-content">
+          <a href=" https://beian.miit.gov.cn/">© 2025 黄色仓库工具箱 | ICP 备案号: 闽ICP备2024077327号</a>
+        </div>
+      </div>
     </el-container>
   </div>
 </template>
@@ -40,6 +46,11 @@ export default {
 * {
   padding: 0;
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
 }
 
 html,
@@ -79,57 +90,13 @@ body {
 
 .footer {
   width: 100%;
-  height: 216px;
-  overflow: hidden;
   background-color: #ffd700;
+  padding: 20px 0;
+  text-align: center;
 
-  &-content {
-    width: 1240px;
-    margin: 0 auto;
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-
-    .content-nav {
-      display: flex;
-      justify-content: space-around;
-
-      li {
-        display: flex;
-        flex-direction: column;
-        padding: 0 20px;
-        //justify-content: center;
-        align-items: flex-start;
-
-        p {
-          font-size: 20px;
-          color: #d4edff;
-          padding: 10px 0;
-        }
-
-        span {
-          color: #f7f7f7;
-          font-weight: 300;
-          padding: 5px 0;
-        }
-      }
-    }
-
-    img {
-      width: 170px;
-      height: 170px;
-      padding: 10px;
-    }
-  }
-
-  .copyright {
-    height: 30px;
-    background: #adaea2;
-
-    span {
-      color: #fff;
-      line-height: 30px;
-    }
+  .footer-content {
+    font-size: 14px;
+    color: #333;
   }
 }
 </style>
