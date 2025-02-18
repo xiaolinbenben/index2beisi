@@ -10,9 +10,19 @@ let router = new Router({
     component: () => import('./views/Home.vue')
   },
   {
+    path: '/mobile',
+    name: 'mobile',
+    component: () => import('./views/MobileHome.vue')
+  },
+  {
     path: '/download',
     name: 'download',
     component: () => import('./views/Download.vue')
+  },
+  {
+    path: '/mobiledownload',
+    name: 'mobiledownload',
+    component: () => import('./views/MobileDownload.vue')
   }
   ]
 })
