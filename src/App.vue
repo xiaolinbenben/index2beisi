@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       router: true,
-      defaultActive: "/",
+      defaultActive: this.$route.path,
       isShow: false
     };
   },
@@ -38,7 +38,13 @@ export default {
       this.isShow = this.defaultActive != key;
       window.console.log(this.isShow);
     }
-  }
+  },
+  watch: {
+    // 监听路由变化，动态更新 defaultActive
+    $route(to) {
+      this.defaultActive = to.path; // 路由变化时更新激活菜单项
+    },
+  },
 };
 </script>
 
@@ -56,6 +62,12 @@ a {
 html,
 body {
   height: 100%;
+}
+
+/* 修改激活菜单项的下划线颜色为黄色 */
+.el-menu-item.is-active {
+  border-bottom: 2px solid #FFD700 !important;
+  /* 设置下边框颜色为黄色 */
 }
 
 #app {
