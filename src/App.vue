@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header>
+      <el-header v-if="!isMobile">
         <div class="logo">
           <img src="./assets/img/logo.png" alt />
         </div>
@@ -15,7 +15,7 @@
         <router-view />
       </el-main>
       <!-- ICP备案 -->
-      <div class="footer">
+      <div class="footer" v-if="!isMobile">
         <div class="footer-content">
           <a href=" https://beian.miit.gov.cn/">© 2025 黄色仓库工具箱 | ICP 备案号: 闽ICP备2024077327号</a>
         </div>
@@ -30,21 +30,54 @@ export default {
     return {
       router: true,
       defaultActive: this.$route.path,
-      isShow: false
+      isShow: false,
+      isMobile: false
     };
   },
   methods: {
     handleSelect(key) {
       this.isShow = this.defaultActive != key;
       window.console.log(this.isShow);
+    },
+    checkDevice() {
+      const userAgent = navigator.userAgent;
+      const mobileDevices = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+      ];
+
+      const isMobile = mobileDevices.some(device => userAgent.match(device));
+      this.isMobile = isMobile;
+
+      // 如果是电脑端且当前路由是 /mobile，跳转到 /home
+      if (!isMobile && this.$route.path === '/mobile') {
+        this.$router.push('/');
+      }
+      // 如果是手机端且当前路由是 /home，跳转到 /mobile
+      else if (isMobile && this.$route.path === '/') {
+        this.$router.push('/mobile');
+      }
+
     }
   },
   watch: {
     // 监听路由变化，动态更新 defaultActive
     $route(to) {
-      this.defaultActive = to.path; // 路由变化时更新激活菜单项
+      this.defaultActive = to.path;
     },
   },
+  created() {
+    this.checkDevice();
+    window.addEventListener('resize', this.checkDevice);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.checkDevice);
+  }
 };
 </script>
 
