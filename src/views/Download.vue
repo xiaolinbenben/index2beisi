@@ -12,7 +12,7 @@
 
       <!-- 下载按钮 -->
       <div class="download-links">
-        <a href="https://your-app-download-link.com" target="_blank" class="btn download-btn">
+        <a href="https://beisi.tech/hsck/hsck_v1.1.3.apk" target="_blank" class="btn download-btn">
           <img src="../assets/img/sanjiao.png" alt="下载图标" /> 立即下载
         </a>
       </div>
@@ -20,7 +20,7 @@
       <!-- 二维码 -->
       <div class="qr-code">
         <p>📲 扫码下载</p>
-        <img src="../assets//img/code.png" alt="APP 下载二维码" />
+        <img src="../assets//img/qrcode.png" alt="APP 下载二维码" />
       </div>
     </div>
   </div>
