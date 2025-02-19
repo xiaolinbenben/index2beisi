@@ -3,7 +3,7 @@
     <swiper id="swiperBox" v-bind:options="swiperOption" ref="mySwiper">
       <swiper-slide class="swiper-slide slide-one">
         <div class="page">
-          <h3>福州倍司</h3>
+          <h3>福 州 倍 司</h3>
           <p>FuZhou Beisi</p>
         </div>
       </swiper-slide>
@@ -23,11 +23,44 @@
             <img src="../assets/img/logo_2.png" alt="黄色仓库 Logo" class="logo" />
             <!-- 下载按钮 -->
             <div class="download-links">
-              <router-link to="/download" class="btn download-btn">
+              <router-link to="/hsck" class="btn download-btn">
                 <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
               </router-link>
             </div>
 
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide class="swiper-slide slide-two">
+
+        <div class="product-intro">
+          <h3>产品介绍</h3>
+          <p>
+            AI_BOX 是一款强大的 AI 调用平台，集成了 ChatGPT、Claude、Gemini 等多种主流 AI 模型，旨在为用户提供高效、便捷的智能交互体验。
+          </p>
+
+          <p>
+            通过 AI_BOX，用户可以随时切换不同 AI 模型，获取最符合需求的回答，无论是内容创作、代码生成、学习辅助，还是数据分析、智能客服，都能轻松应对。<br>
+            无需繁琐的配置，即刻连接全球领先的 AI 技术，享受更精准、更智能的对话体验。
+          </p>
+
+          <p>
+            AI_BOX 采用开放式架构，支持 API 调用与自定义集成，适用于个人开发者、企业应用及科研探索。<br>
+            其灵活的插件机制，让用户能自由扩展 AI 功能，打造个性化的智能助手。
+          </p>
+
+          <p>
+            AI_BOX 的诞生，不仅提升了 AI 应用的可及性，也推动了多模型智能交互的发展。它让 AI 更加贴近生活，为 AI 生态的构建带来无限可能。
+          </p>
+
+          <div class="logo-container">
+            <img src="../assets/img/logo_aibox.png" alt="黄色仓库 Logo" class="logo" />
+
+            <div class="download-links">
+              <router-link to="/ai_box" class="download-btn">
+                <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
+              </router-link>
+            </div>
           </div>
         </div>
       </swiper-slide>
@@ -110,14 +143,25 @@ export default {
 
   .page {
     text-align: center;
-    height: 100px;
+    height: 200px;
     overflow: hidden;
 
     h3,
     p {
-      font-size: 40px;
-      font-weight: 400;
+      font-size: 60px;
+      font-weight: bold;
+      //黑色描边
+      -webkit-text-stroke: 1px black;
+
+      //文字阴影
+
+      text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
       color: #fff;
+    }
+
+    p {
+      font-size: 45px;
     }
   }
 
