@@ -19,7 +19,14 @@ let router = new Router({
     name: 'download',
     component: () => import('./views/Download.vue')
   },
+           
   {
+
+    path: '/welcome',
+    name: 'welcome',
+    component: () => import('./views/WelCome.vue')
+  },
+   {
     path: '/mobiledownload',
     name: 'mobiledownload',
     component: () => import('./views/MobileDownload.vue')
