@@ -8,16 +8,17 @@
         <el-menu :default-active="defaultActive" class="el-menu-demo" mode="horizontal" @select="handleSelect"
           :router="router">
           <el-menu-item index="/">首页</el-menu-item>
-          <el-menu-item index="/download">下载APP</el-menu-item>
+          <el-menu-item index="/welcome">加入我们</el-menu-item>
         </el-menu>
       </el-header>
       <el-main>
         <router-view />
       </el-main>
+
       <!-- ICP备案 -->
       <div class="footer">
         <div class="footer-content">
-          <a href=" https://beian.miit.gov.cn/">© 2025 黄色仓库工具箱 | ICP 备案号: 闽ICP备2024077327号</a>
+          <a href=" https://beian.miit.gov.cn/">© 2025 福州倍司网络科技有限公司 | ICP 备案号: 闽ICP备2024077327号</a>
         </div>
       </div>
     </el-container>
@@ -64,12 +65,6 @@ body {
   height: 100%;
 }
 
-/* 修改激活菜单项的下划线颜色为黄色 */
-.el-menu-item.is-active {
-  border-bottom: 2px solid #FFD700 !important;
-  /* 设置下边框颜色为黄色 */
-}
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -91,24 +86,34 @@ body {
 
     img {
       width: 100%;
-      line-height: 60px;
+      line-height: 50px;
     }
   }
 }
 
-.el-main {
-  padding: 0 !important;
-}
-
 .footer {
-  width: 100%;
-  background-color: #ffd700;
-  padding: 20px 0;
+  z-index: 9999;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  padding: 8px 15px;
+  border-radius: 8px;
   text-align: center;
 
   .footer-content {
     font-size: 14px;
     color: #333;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.el-main {
+  padding: 0 !important;
 }
 </style>
