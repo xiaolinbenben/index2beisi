@@ -1,5 +1,16 @@
 <template>
     <div class="container">
+        <!-- 手机端导航栏 -->
+        <div class="mobile-header" v-if="isMobile">
+            <div class="mobile-logo">
+                <img src="../assets/img/logo.png" alt="黄色仓库 Logo" />
+            </div>
+            <div class="mobile-nav">
+                <router-link to="/mobile" class="mobile-nav-item">首页</router-link>
+                <router-link to="/welcome" class="mobile-nav-item">加入我们</router-link>
+            </div>
+        </div>
+
         <h1 class="title">welcome2bes</h1>
 
         <section class="section">
@@ -130,6 +141,34 @@
     </div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            isMobile: false
+        };
+    },
+    created() {
+        this.checkDevice();
+    },
+    methods: {
+        checkDevice() {
+            const userAgent = navigator.userAgent;
+            const mobileDevices = [
+                /Android/i,
+                /webOS/i,
+                /iPhone/i,
+                /iPad/i,
+                /iPod/i,
+                /BlackBerry/i,
+                /Windows Phone/i
+            ];
+            this.isMobile = mobileDevices.some(device => userAgent.match(device));
+        }
+    }
+};
+</script>
+
 <style scoped>
 /* General styles */
 * {
@@ -152,6 +191,7 @@ body {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-top: 80px;
 }
 
 .title {
@@ -213,5 +253,44 @@ a {
 a:hover {
     color: #0078d4;
     text-decoration: underline;
+}
+
+/* 手机端导航栏样式 */
+.mobile-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.mobile-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.mobile-nav-item {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.mobile-nav-item:hover {
+    color: #ffcc00;
 }
 </style>
