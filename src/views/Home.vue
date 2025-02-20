@@ -23,9 +23,9 @@
           <div class="logo-container">
             <img src="../assets/img/logo_2.png" alt="黄色仓库 Logo" class="logo" />
             <div class="download-links">
-              <router-link to="/hsck" class="btn download-btn">
+              <a href="https://putianikun.cn/hsck" class="btn download-btn">
                 <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
-              </router-link>
+              </a>
             </div>
           </div>
         </div>
@@ -50,9 +50,9 @@
           <div class="logo-container">
             <img src="../assets/img/logo_aibox.png" alt="AI_BOX Logo" class="logo" />
             <div class="download-links">
-              <router-link to="/ai_box" class="download-btn2">
+              <a href="https://putianikun.cn/hsck" class="btn download-btn2">
                 <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
-              </router-link>
+              </a>
             </div>
           </div>
         </div>
