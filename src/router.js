@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 let router = new Router({
+  mode: 'history',  // 改为 history 模式
   routes: [{
     path: '/',
     name: 'home',
