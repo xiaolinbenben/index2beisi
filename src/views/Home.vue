@@ -18,23 +18,21 @@
           </p>
           <p>
             “黄色仓库”的诞生，不仅是对当前软件市场痛点的有力回应，更是对未来应用生态的积极探索。它凭借独特的创新理念和无限的潜力，开启了H5应用新时代，为软件行业的可持续发展注入新的活力和动力。
+            “黄色仓库”不仅是一款便捷的APP，更是一个集H5技术应用、开放生态、友好体验于一体的创新平台。
           </p>
           <div class="logo-container">
             <img src="../assets/img/logo_2.png" alt="黄色仓库 Logo" class="logo" />
-            <!-- 下载按钮 -->
             <div class="download-links">
-              <router-link to="/hsck" class="btn download-btn">
+              <a href="https://putianikun.cn/hsck" class="btn download-btn">
                 <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
-              </router-link>
+              </a>
             </div>
-
           </div>
         </div>
       </swiper-slide>
-      <swiper-slide class="swiper-slide slide-two">
-
+      <swiper-slide class="swiper-slide slide-three">
         <div class="product-intro">
-          <h3>产品介绍</h3>
+          <h3>AI_BOX</h3>
           <p>
             AI_BOX 是一款强大的 AI 调用平台，集成了 ChatGPT、Claude、Gemini 等多种主流 AI 模型，旨在为用户提供高效、便捷的智能交互体验。
           </p>
@@ -49,22 +47,16 @@
             其灵活的插件机制，让用户能自由扩展 AI 功能，打造个性化的智能助手。
           </p>
 
-          <p>
-            AI_BOX 的诞生，不仅提升了 AI 应用的可及性，也推动了多模型智能交互的发展。它让 AI 更加贴近生活，为 AI 生态的构建带来无限可能。
-          </p>
-
           <div class="logo-container">
-            <img src="../assets/img/logo_aibox.png" alt="黄色仓库 Logo" class="logo" />
-
+            <img src="../assets/img/logo_aibox.png" alt="AI_BOX Logo" class="logo" />
             <div class="download-links">
-              <router-link to="/ai_box" class="download-btn">
+              <a href="https://putianikun.cn/hsck" class="btn download-btn2">
                 <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
-              </router-link>
+              </a>
             </div>
           </div>
         </div>
       </swiper-slide>
-
     </swiper>
   </div>
 </template>
@@ -80,46 +72,23 @@ export default {
   data() {
     return {
       loading: false,
-      caseList: [],
-      newsList: [],
       swiperOption: {
-        notNextTick: true, //notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
-        direction: "vertical", //水平方向移动
-        grabCursor: true, //鼠标覆盖Swiper时指针会变成手掌形状，拖动时指针会变成抓手形状
-        setWrapperSize: true, //Swiper使用flexbox布局(display: flex)，开启这个设定会在Wrapper上添加等于slides相加的宽或高，在对flexbox布局的支持不是很好的浏览器中可能需要用到。
-        autoHeight: true, //自动高度。设置为true时，wrapper和container会随着当前slide的高度而发生变化
-        slidesPerView: 1, //设置slider容器能够同时显示的slides数量(carousel模式)。可以设置为数字（可为小数，小数不可loop），或者 'auto'则自动根据slides的宽度来设定数量。loop模式下如果设置为'auto'还需要设置另外一个参数loopedSlides。
-        mousewheel: true, //开启鼠标滚轮控制Swiper切换。可设置鼠标选项，默认值false
-        mousewheelControl: true, //同上
-        height: window.innerHeight - 60, // 高度设置，占满设备高度
-        resistanceRatio: 0, //抵抗率。边缘抵抗力的大小比例。值越小抵抗越大越难将slide拖离边缘，0时完全无法拖离。本业务需要
-        observeParents: true, //将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新
-
-        // 如果自行设计了插件，那么插件的一些配置相关参数，也应该出现在这个对象中，如下debugger
-        //debugger: true,
-
-        // swiper的各种回调函数也可以出现在这个对象中，和swiper官方一样
-        on: {
-          // 监听滑动切换事件，返回swiper对象
-          slideChange: () => {
-            let swiper = this.$refs.mySwiper.swiper;
-            //console.log(swiper.activeIndex); //滑动打印当前索引
-            if (swiper.activeIndex === this.list.length - 1) {
-              //到最后一个加载更多数据
-              let newList = [];
-              let listLength = this.list.length;
-              for (let i = 0; i < 10; i++) {
-                newList.push(listLength + i);
-              }
-              this.list = this.list.concat(newList);
-            }
-          }
-        }
+        direction: "vertical",
+        grabCursor: true,
+        autoHeight: true,
+        slidesPerView: 1,
+        mousewheel: true,
+        height: window.innerHeight - 60,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        resistanceRatio: 0,
+        observeParents: true,
       }
     };
   },
-  created() { },
-  // 如果你需要得到当前的swiper对象来做一些事情，你可以像下面这样定义一个方法属性来获取当前的swiper对象，同时notNextTick必须为true
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
@@ -186,6 +155,15 @@ export default {
   box-sizing: border-box;
 }
 
+.slide-three {
+  display: flex;
+  height: 100vh;
+  // 白灰渐变
+  background: linear-gradient(135deg, #f5f5f5, #908989);
+  color: #333;
+  box-sizing: border-box;
+}
+
 
 .product-intro {
   padding: 30px;
@@ -224,6 +202,29 @@ export default {
       gap: 12px;
       padding: 15px 30px;
       background-color: #ffcc00;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    .download-btn2 {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 30px;
+      background-color: #9f9a9a;
       border-radius: 12px;
       text-decoration: none;
       color: #000;
