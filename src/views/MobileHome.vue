@@ -100,10 +100,7 @@ export default {
       const autoScrollInterval = setInterval(() => {
         if (!isScrolling) {
           currentIndex = (currentIndex + 1) % totalSlides;
-          container.scrollTo({
-            left: currentIndex * window.innerWidth,
-            behavior: 'smooth'
-          });
+          this.scrollToSlide(container, currentIndex);
         }
       }, 5000); // 每 5 秒翻页一次
 
@@ -124,15 +121,12 @@ export default {
 
         if (Math.abs(deltaX) > 50) {
           isScrolling = true;
-          if (deltaX > 0 && currentIndex < totalSlides - 1) {
-            currentIndex++;
-          } else if (deltaX < 0 && currentIndex > 0) {
-            currentIndex--;
+          if (deltaX > 0) {
+            currentIndex = (currentIndex + 1) % totalSlides; // 右翻
+          } else {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // 左翻
           }
-          container.scrollTo({
-            left: currentIndex * window.innerWidth,
-            behavior: 'smooth'
-          });
+          this.scrollToSlide(container, currentIndex);
           startX = currentX;
           isDragging = false;
           setTimeout(() => {
@@ -152,20 +146,23 @@ export default {
         isScrolling = true;
         const delta = e.deltaX > 0 ? 1 : -1;
 
-        if (delta > 0 && currentIndex < totalSlides - 1) {
-          currentIndex++;
-        } else if (delta < 0 && currentIndex > 0) {
-          currentIndex--;
+        if (delta > 0) {
+          currentIndex = (currentIndex + 1) % totalSlides; // 右翻
+        } else {
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // 左翻
         }
 
-        container.scrollTo({
-          left: currentIndex * window.innerWidth,
-          behavior: 'smooth'
-        });
+        this.scrollToSlide(container, currentIndex);
 
         setTimeout(() => {
           isScrolling = false;
         }, 500); // 防止快速滚动
+      });
+    },
+    scrollToSlide(container, index) {
+      container.scrollTo({
+        left: index * window.innerWidth,
+        behavior: 'smooth'
       });
     }
   }
