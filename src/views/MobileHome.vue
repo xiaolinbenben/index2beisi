@@ -26,21 +26,21 @@
         <div class="mobile-product-intro">
           <h3>产品介绍</h3>
           <p>
-            “黄色仓库”不仅是一款便捷的APP，更是一个集H5技术应用、开放生态、友好体验于一体的创新平台。它如同一座桥梁，紧密连接着用户与开发者，致力于打破传统应用市场的壁垒。
+            <strong>"黄色仓库"</strong>是一款创新的H5应用平台，<strong>轻量便捷</strong>，无需安装，提供<strong>纯净高效</strong>的使用体验。
           </p>
           <p>
-            在“黄色仓库”，用户可以告别手机APP占用内存过大、广告弹窗频繁、功能复杂冗余的困扰，享受更加纯净、高效的使用体验。同时，开发者也能摆脱严格的应用审核要求和高昂的上架成本，在一个更加自由、开放的环境中释放创意，实现价值。
+            告别传统APP的<strong>内存占用大</strong>、<strong>广告弹窗多</strong>等问题，让您的手机运行更流畅。
           </p>
           <p>
-            “黄色仓库”的诞生，不仅是对当前软件市场痛点的有力回应，更是对未来应用生态的积极探索。它凭借独特的创新理念和无限的潜力，开启了H5应用新时代，为软件行业的可持续发展注入新的活力和动力。
+            开发者也能在<strong>开放自由</strong>的环境中快速发布应用，<strong>降低开发成本</strong>，实现创意价值。
           </p>
 
           <!-- 下载区域 -->
           <div class="mobile-logo-container">
             <img src="../assets/img/logo_2.png" alt="黄色仓库 Logo" class="mobile-logo" />
-            <router-link to="/mobiledownload" class="mobile-download-btn">
+            <a href="https://putianikun.cn/hsck" target="_blank" class="mobile-download-btn">
               <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -50,23 +50,20 @@
         <div class="mobile-product-intro">
           <h3>产品介绍</h3>
           <p>
-            AI_BOX 是一款强大的 AI 调用平台，集成了 ChatGPT、Claude、Gemini 等多种主流 AI 模型，旨在为用户提供高效、便捷的智能交互体验。
+            <strong>AI BOX</strong> 是一款强大的AI调用平台，集成<strong>ChatGPT</strong>、<strong>DeepSeek</strong>等主流AI模型。
           </p>
           <p>
-            通过 AI_BOX，用户可以随时切换不同 AI 模型，获取最符合需求的回答，无论是内容创作、代码生成、学习辅助，还是数据分析、智能客服，都能轻松应对。
+            提供<strong>智能对话</strong>、<strong>知识问答</strong>、<strong>专业分析</strong>等功能，满足多种场景需求。
           </p>
           <p>
-            AI_BOX 采用开放式架构，支持 API 调用与自定义集成，适用于个人开发者、企业应用及科研探索。其灵活的插件机制，让用户能自由扩展 AI 功能，打造个性化的智能助手。
-          </p>
-          <p>
-            AI_BOX 的诞生，不仅提升了 AI 应用的可及性，也推动了多模型智能交互的发展。它让 AI 更加贴近生活，为 AI 生态的构建带来无限可能。
+            支持<strong>模型切换</strong>和<strong>参数自定义</strong>，帮助用户提升工作效率，降低操作成本。
           </p>
 
           <!-- 下载区域 -->
           <div class="mobile-logo-container">
             <img src="../assets/img/logo_aibox.png" alt="AI_BOX Logo" class="mobile-logo" />
             <router-link to="/ai_box" class="mobile-download-btn">
-              <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
+              <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往体验
             </router-link>
           </div>
         </div>
@@ -85,33 +82,41 @@
 <script>
 export default {
   name: "MobileHome",
+  data() {
+    return {
+      currentIndex: 0,
+      autoScrollInterval: null,
+      isScrolling: false
+    };
+  },
   mounted() {
     this.initHorizontalScroll();
+  },
+  beforeUnmount() {
+    this.stopAutoScroll();
   },
   methods: {
     initHorizontalScroll() {
       const container = this.$refs.horizontalContainer;
-      let currentIndex = 0;
       const slides = container.children;
       const totalSlides = slides.length;
-      let isScrolling = false;
 
       // 自动翻页逻辑
-      const autoScrollInterval = setInterval(() => {
-        if (!isScrolling) {
-          currentIndex = (currentIndex + 1) % totalSlides;
-          this.scrollToSlide(container, currentIndex);
+      this.autoScrollInterval = setInterval(() => {
+        if (!this.isScrolling) {
+          this.currentIndex = (this.currentIndex + 1) % totalSlides;
+          this.scrollToSlide(container, this.currentIndex);
         }
       }, 5000); // 每 5 秒翻页一次
 
-      // 手动翻页逻辑
+      // 手机触控翻页逻辑
       let startX = 0;
       let isDragging = false;
 
-      // 监听 touch 事件
       container.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
+        this.isScrolling = true; // 用户开始操作时暂停自动翻页
       });
 
       container.addEventListener('touchmove', (e) => {
@@ -120,44 +125,28 @@ export default {
         const deltaX = startX - currentX;
 
         if (Math.abs(deltaX) > 50) {
-          isScrolling = true;
           if (deltaX > 0) {
-            currentIndex = (currentIndex + 1) % totalSlides; // 右翻
+            this.currentIndex = Math.min(this.currentIndex + 1, totalSlides - 1); // 右翻
           } else {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // 左翻
+            this.currentIndex = Math.max(this.currentIndex - 1, 0); // 左翻
           }
-          this.scrollToSlide(container, currentIndex);
+          this.scrollToSlide(container, this.currentIndex);
           startX = currentX;
           isDragging = false;
-          setTimeout(() => {
-            isScrolling = false;
-          }, 500); // 防止快速滚动
         }
       });
 
       container.addEventListener('touchend', () => {
         isDragging = false;
-      });
-
-      // 监听 wheel 事件
-      container.addEventListener('wheel', (e) => {
-        if (isScrolling) return;
-
-        isScrolling = true;
-        const delta = e.deltaX > 0 ? 1 : -1;
-
-        if (delta > 0) {
-          currentIndex = (currentIndex + 1) % totalSlides; // 右翻
-        } else {
-          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // 左翻
-        }
-
-        this.scrollToSlide(container, currentIndex);
-
         setTimeout(() => {
-          isScrolling = false;
-        }, 500); // 防止快速滚动
+          this.isScrolling = false; // 用户操作结束后恢复自动翻页
+        }, 1000);
       });
+    },
+    stopAutoScroll() {
+      if (this.autoScrollInterval) {
+        clearInterval(this.autoScrollInterval);
+      }
     },
     scrollToSlide(container, index) {
       container.scrollTo({
@@ -191,13 +180,14 @@ export default {
   width: 100%;
   height: 100vh;
   display: flex;
-  overflow-x: hidden;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 .mobile-slide-two,
 .mobile-slide-three {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   flex-shrink: 0;
   scroll-snap-align: start;
@@ -270,17 +260,22 @@ export default {
   .mobile-product-intro {
     max-width: 100%;
     h3 {
-      font-size: 24px;
+      font-size: 28px;
       margin-bottom: 20px;
       color: #222;
     }
 
     p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 15px;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 20px;
       color: #333;
       text-align: justify;
+    }
+
+    strong {
+      font-weight: bold;
+      color: #000;
     }
   }
 
