@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 let router = new Router({
-  mode: 'history',  // 改为 history 模式
   routes: [{
     path: '/',
     name: 'home',
@@ -22,7 +21,6 @@ let router = new Router({
   },
            
   {
-
     path: '/welcome',
     name: 'welcome',
     component: () => import('./views/WelCome.vue')
@@ -31,8 +29,12 @@ let router = new Router({
     path: '/mobiledownload',
     name: 'mobiledownload',
     component: () => import('./views/MobileDownload.vue')
-  }
-  ]
+  },
+  // 简单地将所有未匹配的路由重定向到首页
+  {
+    path: '*',
+    redirect: '/'
+  }]
 })
 
 export default router
