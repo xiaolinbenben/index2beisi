@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 let router = new Router({
-  //将history改为hash模式
   routes: [{
     path: '/',
     name: 'home',
