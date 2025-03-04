@@ -9,50 +9,34 @@
       </swiper-slide>
       <swiper-slide class="swiper-slide slide-two">
         <div class="product-intro">
-          <h3>产品介绍</h3>
-          <p>
-            “黄色仓库”不仅是一款便捷的APP，更是一个集H5技术应用、开放生态、友好体验于一体的创新平台。它如同一座桥梁，紧密连接着用户与开发者，致力于打破传统应用市场的壁垒。
-          </p>
-          <p>
-            在“黄色仓库”，用户可以告别手机APP占用内存过大、广告弹窗频繁、功能复杂冗余的困扰，享受更加纯净、高效的使用体验。同时，开发者也能摆脱严格的应用审核要求和高昂的上架成本，在一个更加自由、开放的环境中释放创意，实现价值。
-          </p>
-          <p>
-            “黄色仓库”的诞生，不仅是对当前软件市场痛点的有力回应，更是对未来应用生态的积极探索。它凭借独特的创新理念和无限的潜力，开启了H5应用新时代，为软件行业的可持续发展注入新的活力和动力。
-            “黄色仓库”不仅是一款便捷的APP，更是一个集H5技术应用、开放生态、友好体验于一体的创新平台。
-          </p>
           <div class="logo-container">
             <img src="../assets/img/logo_2.png" alt="黄色仓库 Logo" class="logo" />
-            <div class="download-links">
-              <a href="https://putianikun.cn/hsck" class="btn download-btn">
-                <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
-              </a>
+            <div class="content-box">
+              <h1 style="font-size: 50px;">黄色仓库</h1>
+              <p>更友好、更开放、更便捷</p>
+              <p>的网页端应用平台</p>
+              <div class="download-links">
+                <a href="https://putianikun.cn/hsck" class="btn download-btn">
+                  <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </swiper-slide>
       <swiper-slide class="swiper-slide slide-three">
         <div class="product-intro">
-          <h3>AI_BOX</h3>
-          <p>
-            AI_BOX 是一款强大的 AI 调用平台，集成了 ChatGPT、Claude、Gemini 等多种主流 AI 模型，旨在为用户提供高效、便捷的智能交互体验。
-          </p>
-
-          <p>
-            通过 AI_BOX，用户可以随时切换不同 AI 模型，获取最符合需求的回答，无论是内容创作、代码生成、学习辅助，还是数据分析、智能客服，都能轻松应对。<br>
-            无需繁琐的配置，即刻连接全球领先的 AI 技术，享受更精准、更智能的对话体验。
-          </p>
-
-          <p>
-            AI_BOX 采用开放式架构，支持 API 调用与自定义集成，适用于个人开发者、企业应用及科研探索。<br>
-            其灵活的插件机制，让用户能自由扩展 AI 功能，打造个性化的智能助手。
-          </p>
-
           <div class="logo-container">
             <img src="../assets/img/logo_aibox.png" alt="AI_BOX Logo" class="logo" />
-            <div class="download-links">
-              <a href="https://putianikun.cn/hsck" class="btn download-btn2">
-                <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
-              </a>
+            <div class="content-box">
+              <h1>AI Box</h1>
+              <p>一个集成主流AI大模型与</p>
+              <p>AI应用的APP</p>
+              <div class="download-links">
+                <a href="https://putianikun.cn/hsck" class="btn download-btn2">
+                  <img src="../assets/img/sanjiao.png" alt="下载图标" /> 前往下载
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -117,10 +101,8 @@ export default {
 
     h3,
     p {
-      font-size: 60px;
+      font-size: 80px;
       font-weight: bold;
-      //黑色描边
-      -webkit-text-stroke: 1px black;
 
       //文字阴影
 
@@ -130,7 +112,7 @@ export default {
     }
 
     p {
-      font-size: 45px;
+      font-size: 60px;
     }
   }
 
@@ -166,37 +148,59 @@ export default {
 
 
 .product-intro {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  flex-direction: column; /* 内容上下排列 */
   padding: 30px;
   color: #333;
-  text-align: left;
+  text-align: center;
 
   h3 {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    margin-bottom: 10px;
     color: #222;
   }
 
   p {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 30px;
+    line-height: 1;
     margin-bottom: 15px;
   }
 
   .logo-container {
-    text-align: center;
-    margin-top: 30px;
-
-    .logo {
-      width: 450px;
-      /* 根据你的需求调整宽度 */
-      height: auto;
-    }
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    gap: 60px; /* 图片和内容之间的间距 */
+    width: 100%; 
+    max-width: 800px; 
+    margin: 0 auto; /* 水平居中 */
   }
 
-  .download-links {
-    margin: 20px 0;
+   .logo {
+    width: 200px; 
+    height: auto;
+  }
+    .content-box {
+    display: flex;
+    flex-direction: column; /* 内容上下排列 */
+    align-items: flex-start; /* 内容左对齐 */
+    text-align: left;
 
-    .download-btn {
+    h1 {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+
+    .download-links {
+      .download-btn {
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -218,27 +222,28 @@ export default {
         height: 28px;
       }
     }
+      .download-btn2 {
+        margin-top:6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 30px;
+        background-color: #9f9a9a;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
 
-    .download-btn2 {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 15px 30px;
-      background-color: #9f9a9a;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s;
+        &:hover {
+          transform: translateY(-5px);
+        }
 
-      &:hover {
-        transform: translateY(-5px);
-      }
-
-      img {
-        width: 28px;
-        height: 28px;
+        img {
+          width: 28px;
+          height: 28px;
+        }
       }
     }
   }
