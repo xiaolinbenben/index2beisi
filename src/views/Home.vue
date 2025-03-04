@@ -2,10 +2,7 @@
   <div class="home" v-loading="loading">
     <swiper id="swiperBox" v-bind:options="swiperOption" ref="mySwiper">
       <swiper-slide class="swiper-slide slide-one">
-        <div class="page">
-          <h3>福 州 倍 司</h3>
-          <p>FuZhou Beisi</p>
-        </div>
+          <img src="../assets/img/Fuzhoubeisi.png" alt="福州倍思 Logo" class="logo" />
       </swiper-slide>
       <swiper-slide class="swiper-slide slide-two">
         <div class="product-intro">
@@ -94,27 +91,6 @@ export default {
   justify-content: center;
   align-content: center;
 
-  .page {
-    text-align: center;
-    height: 200px;
-    overflow: hidden;
-
-    h3,
-    p {
-      font-size: 80px;
-      font-weight: bold;
-
-      //文字阴影
-
-      text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-
-      color: #fff;
-    }
-
-    p {
-      font-size: 60px;
-    }
-  }
 
   .slogan {
     text-align: center;
@@ -126,7 +102,14 @@ export default {
 
 .slide-one {
   background: url(../assets/img/Fuzhou_Taixi_CBD.jpg) no-repeat center;
-  background-size: cover;
+  background-size: cover;   
+  display: flex; /* 确保是 flex 布局 */
+  justify-content: center; /* 水平居中 */
+}
+
+.slide-one .logo {
+  margin: auto; /* 水平和垂直居中 */
+  width:500px;
 }
 
 .slide-two {
